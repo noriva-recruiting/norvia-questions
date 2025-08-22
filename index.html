@@ -1,14 +1,11 @@
-
 <!DOCTYPE html>
 <html lang="en">
-    <link rel="icon" type="image/x-icon" href="github/NorviaLogo.png">
-   
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Video Interview | NORVIA</title>
-      <link rel="icon" type="image/x-icon" href="favicon.ico">
-    <style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NORVIA - Talent Acquisition Process</title>
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <style>
         :root {
             --norvia-blue: #0a2463;
             --norvia-red: #fb3640;
@@ -16,13 +13,13 @@
             --norvia-dark: #1e1e24;
             --norvia-light: #f8f9fa;
         }
-        
+       
         .company-logo {
-    height: 80px; /* Höhe anpassen */
+    height: 60px; /* Höhe anpassen */
     width: auto;
-    object-fit: contain;
-}
+    object-fit:contain;
 
+}     
         @font-face {
             font-family: 'NorviaSans';
             src: url('https://fonts.cdnfonts.com/css/sf-pro-display') format('woff2');
@@ -91,8 +88,7 @@
     gap: 0.5rem; /* Abstand zwischen Logo und Slogan */
 }
         
-        
-        .logo h1 {
+.logo h1 {
             font-size: 2rem;
             font-weight: 700;
             background: linear-gradient(90deg, #00a6fb 0%, #0582ca 100%);
@@ -113,7 +109,7 @@
             display: flex;
             align-items: center;
             gap: 0.5rem;
-            font-size: 1.2rem;
+            font-size: 0.8rem;
             color: var(--norvia-accent);
         }
         
@@ -188,49 +184,35 @@
             line-height: 1.7;
         }
         
-        ul {
-    list-style: none;
-    padding-left: 1.5rem;
-    margin-bottom: 1.5rem;
-}
-
-ul li, ol li {
-    position: relative;
-    margin-bottom: 0.5rem;
-}
-
-ul li::before {
-    content: '→';
-    color: var(--norvia-accent);
-    position: absolute;
-    left: -1.5rem;
-}
-
-ol {
-    list-style-type: decimal;
-    padding-left: 1.5rem;
-}
-
-ol li::before {
-    content: none;
-}
-
-
-
+        ul, ol {
+            margin-bottom: 1.5rem;
+            padding-left: 1.5rem;
+        }
         
+        li {
+            margin-bottom: 0.5rem;
+            position: relative;
+        }
+        
+        li::before {
+            content: '→';
+            color: var(--norvia-accent);
+            position: absolute;
+            left: -1.5rem;
+        }
+    
         strong {
             color: var(--norvia-accent);
             font-weight: 600;
         }
         
         .timer {
-            font-size: 2.5rem;
+            font-size: 1.5;
             font-family: 'Courier New', monospace;
             font-weight: bold;
-            text-align: center;
+            text-align: right;
             margin: 2rem 0;
-            color: var(--norvia-red);
-            text-shadow: 0 0 10px rgba(251, 54, 64, 0.5);
+            color: var(--norvia-light);
             position: relative;
         }
         
@@ -241,63 +223,6 @@ ol li::before {
             letter-spacing: 2px;
             color: rgba(248, 249, 250, 0.7);
             margin-bottom: 0.5rem;
-        }
-        
-        .webcam-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin: 2rem 0;
-        }
-        
-        .webcam-box {
-            width: 640px;
-            height: 480px;
-            background-color: #000;
-            border-radius: 8px;
-            overflow: hidden;
-            position: relative;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-            border: 2px solid rgba(0, 166, 251, 0.3);
-        }
-        
-        .face-marker {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 250px;
-            height: 300px;
-            border: 2px dashed var(--norvia-red);
-            border-radius: 10px;
-            z-index: 10;
-            opacity: 0.7;
-        }
-        
-        .webcam-video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transform: scaleX(-1);
-        }
-        
-        .webcam-text {
-            margin-top: 1rem;
-            font-size: 0.9rem;
-            color: rgba(248, 249, 250, 0.7);
-            text-align: center;
-            max-width: 640px;
-        }
-        
-        .webcam-text p {
-            margin-bottom: 0.5rem;
-        }
-        
-        .permission-denied {
-            color: var(--norvia-red);
-            font-weight: bold;
-            text-align: center;
-            margin: 1rem 0;
         }
         
         .btn {
@@ -359,38 +284,6 @@ ol li::before {
             width: 0%;
         }
         
-        .ai-analysis {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            background: rgba(30, 30, 36, 0.9);
-            border: 1px solid rgba(0, 166, 251, 0.3);
-            border-radius: 8px;
-            padding: 1rem;
-            width: 300px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-            z-index: 100;
-            display: none;
-        }
-        
-        .ai-analysis h3 {
-            font-size: 1rem;
-            margin-bottom: 0.5rem;
-            color: var(--norvia-accent);
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        
-        .ai-analysis h3::before {
-            content: '⚡';
-        }
-        
-        .ai-analysis p {
-            font-size: 0.8rem;
-            color: rgba(248, 249, 250, 0.7);
-        }
-        
         .terminal-effect {
             position: absolute;
             top: 0;
@@ -408,314 +301,187 @@ ol li::before {
             z-index: -1;
         }
         
+        textarea {
+            width: 100%;
+            background: rgba(10, 36, 99, 0.2);
+            border: 1px solid rgba(0, 166, 251, 0.3);
+            border-radius: 8px;
+            padding: 1rem;
+            color: var(--norvia-light);
+            font-size: 1rem;
+            min-height: 150px;
+            margin: 1rem 0;
+            resize: vertical;
+        }
+        
+        textarea:focus {
+            outline: none;
+            border-color: var(--norvia-accent);
+            box-shadow: 0 0 0 2px rgba(0, 166, 251, 0.2);
+        }
+        
         @media (max-width: 768px) {
             #app {
                 padding: 1rem;
             }
             
-            .webcam-box {
-                width: 100%;
-                height: auto;
-                aspect-ratio: 4/3;
-            }
-            
-            .ai-analysis {
-                width: calc(100% - 2rem);
-                bottom: 1rem;
-                right: 1rem;
+            .logo h1 {
+                font-size: 1.5rem;
             }
         }
+        
+        .status-indicator { display: none !important; }
+
     </style>
 </head>
 <body>
     <div class="cyber-border"></div>
     <div id="app">
-        <div class="terminal-effect"></div>
-        
         <header>
             <div class="logo">
-                <img src="NorviaLogo.png" alt="NORVIA Logo" class="company-logo">
+               <img src="NorviaLogo-removebg-preview.png" alt="NORVIA Logo" class="company-logo">
                 <div class="tagline">Human Potential - Data-Driven.</div>
             </div>
-            <div class="status-indicator" id="statusIndicator">
+            <div class="status-indicator">
                 <div class="status-dot"></div>
-                <span>NORVIA™ RECORDING ACTIVE</span>
+                <span>Application in Progress</span>
             </div>
         </header>
-        
-        
+
         <div class="progress-container">
             <div class="progress-bar" id="progressBar"></div>
         </div>
 
- 
-
-        <!-- Page 4: Technical Details -->
+      
+        <!-- Page 4 - Question 1 -->
         <div class="page" id="page4">
-            <h1>Technical Details</h1>
-            <ul>
-                <li>You are now entering a live video session.</li>
-                <li>Please allow this website to access your camera and microphone, so that your recording can be prepared for review by a recruiter.</li>
-                <li>Please speak directly into the camera addressing your recruiter.</li>
-            </ul>
-            <p><strong>Tip:</strong> The recruiter will also pay attention to your nonverbal presence – make sure to stay calm, focused, and authentic.</p>
-            <button class="btn" onclick="startWebcamAndContinue()">Start Screening</button>
-      <div id="permError" class="permission-denied" style="margin-top: .5rem;"></div>
-
+            <div class="terminal-effect"></div>
+            <h1>Question 1</h1>
+            <p>Tell us a little about yourself: What's your academic background, work experience, hobbies etc.</p>
+            <div class="timer" id="timer1">01:00</div>
+            <textarea id="answer1" placeholder="Type your response here..."></textarea>
+            <button class="btn" onclick="nextQuestion()">Next Question</button>
         </div>
 
-        <!-- Page 5: Self Introduction -->
+      <!-- Page 5 - Question 2 -->
         <div class="page" id="page5">
-            <h1>Self introduction (1 min)</h1>
-            <p>Please introduce yourself to your recruiter. You may wish to include:</p>
-            <ul>
-                <li>Your academic or professional background</li>
-                <li>Your motivation for applying to NORVIA</li>
-                <li>What you bring to the role of Talent Acquisition & AI Integration Recruiter</li>
-            </ul>
-            
-            <div class="timer" id="timer1">1:00</div>
-            
-            <div class="webcam-container">
-                <div class="webcam-box">
-                    <div class="face-marker"></div>
-                    <video id="webcam1" class="webcam-video" autoplay playsinline></video>
-                    <div id="webcamError1" class="permission-denied"></div>
-                </div>
-                <div class="webcam-text">
-                    <p>💡 Note: Sudden pauses or inconsistencies may affect your behavioral alignment score.</p>
-                </div>
-            </div>
+            <div class="terminal-effect"></div>
+            <h1>Question 2</h1>
+            <p>How do you think, the future of recruiting will look like in around 10 years?</p>
+            <div class="timer" id="timer2">01:00</div>
+            <textarea id="answer2" placeholder="Type your response here..."></textarea>
+            <button class="btn" onclick="nextQuestion()">Next Question</button>
         </div>
-       
 
-        <!-- Page 6: Question 1 -->
+        <!-- Page 6 - Question 3 -->
         <div class="page" id="page6">
-            <h1>Personal strengths & weaknesses (3×1 min)</h1>
-            <p><strong>Question 1:</strong><br>Tell your recruiter about a situation in which you had to make a difficult decision under pressure. What did you do and what was the outcome?</p>
-            
-            <div class="timer" id="timer2">1:00</div>
-            
-            <div class="webcam-container">
-                <div class="webcam-box">
-                    <div class="face-marker"></div>
-                    <video id="webcam2" class="webcam-video" autoplay playsinline></video>
-                    <div id="webcamError2" class="permission-denied"></div>
-                </div>
-                <div class="webcam-text">
-                     <p>💡 Note: Sudden pauses or inconsistencies may affect your behavioral alignment score.</p>
-                </div>
-            </div>
+            <div class="terminal-effect"></div>
+            <h1>Question 3</h1>
+            <p>What kind of work environment helps you do your best? You can also share a specific situation or example, if you'd like to.</p>
+            <div class="timer" id="timer3">01:00</div>
+            <textarea id="answer3" placeholder="Type your response here..."></textarea>
+            <button class="btn" onclick="nextQuestion()">Next Question</button>
         </div>
 
-        <!-- Page 7: Question 2 -->
+        <!-- Page 7 - Question 4 -->
         <div class="page" id="page7">
-            <h1>Personal strengths & weaknesses (3×1 min)</h1>
-            <p><strong>Question 2:</strong><br>How do you typically handle negative feedback or criticism?</p>
-            
-            <div class="timer" id="timer3">1:00</div>
-            
-            <div class="webcam-container">
-                <div class="webcam-box">
-                    <div class="face-marker"></div>
-                    <video id="webcam3" class="webcam-video" autoplay playsinline></video>
-                    <div id="webcamError3" class="permission-denied"></div>
-                </div>
-                <div class="webcam-text">
-                    <p>💡 Note: Sudden pauses or inconsistencies may affect your behavioral alignment score.</p>
-                </div>
-            </div>
+            <div class="terminal-effect"></div>
+            <h1>Question 4</h1>
+            <p>In what kind of team setting do you feel most productive or comfortable?</p>
+            <div class="timer" id="timer4">01:00</div>
+            <textarea id="answer4" placeholder="Type your response here..."></textarea>
+            <button class="btn" onclick="submitAnswers()">Submit Answers</button>
         </div>
 
-        <!-- Page 8: Question 3 -->
+        <!-- Page 8 - Completion -->
         <div class="page" id="page8">
-            <h1>Personal strengths & weaknesses (3×1 min)</h1>
-            <p><strong>Question 3:</strong><br>What would you say is your greatest weakness – and how are you working on it?</p>
-            
-            <div class="timer" id="timer4">1:00</div>
-            
-            <div class="webcam-container">
-                <div class="webcam-box">
-                    <div class="face-marker"></div>
-                    <video id="webcam4" class="webcam-video" autoplay playsinline></video>
-                    <div id="webcamError4" class="permission-denied"></div>
-                </div>
-                <div class="webcam-text">
-                     <p>💡 Note: Sudden pauses or inconsistencies may affect your behavioral alignment score.</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Page 9: Summary -->
-        <div class="page" id="page9">
-            <h1>Screening Summary</h1>
-            <p>Thank you. Your session has been successfully completed.</p>
-            <p>Your responses have been submitted and will now be reviewed by a recruiter as part of NORVIA’s selection process. You can now close this tab and return to the main survey page.</p>
-        </div>
-
-        <div class="ai-analysis" id="aiAnalysis">
-            <h3>RECORDING STATUS</h3>
-            <p id="aiAnalysisText">Initializing video and audio recording...</p>
+            <div class="terminal-effect"></div>
+            <h1>End of session</h1>
+            <p>Thanks for getting to know you better. You can now close this tab and return to the main survey page.</p>
         </div>
     </div>
 
-    <script>
-        let currentPage = 1;
-        const totalPages = 9;
-        let timers = {};
-        let mediaStream = null;
-        let aiAnalysisInterval;
-        const aiMessages = [
-            "Capturing video and audio...",
-            "Saving your response securely...",
-            "Preparing your recording for recruiter review...",            
-        ];
-    
-        function updateProgressBar() {
-            const progress = (currentPage / totalPages) * 100;
-            document.getElementById('progressBar').style.width = `${progress}%`;
-        }
-    
-        function updateStatusIndicatorVisibility() {
-    const statusIndicator = document.getElementById('statusIndicator');
-    const aiAnalysis = document.getElementById('aiAnalysis');
+<script>
+    let currentPage = 4;
+    const totalPages = 8;
+    let timers = [];
 
-    if (currentPage >= 5 && currentPage <= 8) {
-        statusIndicator.style.display = 'flex';
-        aiAnalysis.style.display = 'block';
-    } else {
-        statusIndicator.style.display = 'none';
-        aiAnalysis.style.display = 'none';
+    function updateProgressBar() {
+        const progress = (currentPage / totalPages) * 100;
+        document.getElementById('progressBar').style.width = `${progress}%`;
     }
-}
-    
-function showAiAnalysis() {
-    const aiBox = document.getElementById('aiAnalysis');
-    let counter = 0;
-    aiAnalysisInterval = setInterval(() => {
-        document.getElementById('aiAnalysisText').textContent = aiMessages[counter % aiMessages.length];
-        counter++;
-    
-                if (Math.random() > 0.7) {
-                    aiBox.style.boxShadow = `0 0 ${Math.floor(Math.random() * 15) + 5}px rgba(0, 166, 251, ${Math.random() * 0.5 + 0.3})`;
-                }
-            }, 3000);
-        }
-    
-        function nextPage() {
-            document.getElementById(`page${currentPage}`).classList.remove('active-page');
-            currentPage++;
-            document.getElementById(`page${currentPage}`).classList.add('active-page');
-            updateProgressBar();
-            updateStatusIndicatorVisibility();
-    
-            if (currentPage >= 5 && !aiAnalysisInterval) {
-                showAiAnalysis();
-            }
-    
-            if (currentPage === 5) {
-                startTimer('timer1', 60, 6);
-            } else if (currentPage === 6) {
-                startTimer('timer2', 60, 7);
-            } else if (currentPage === 7) {
-                startTimer('timer3', 60, 8);
-            } else if (currentPage === 8) {
-                startTimer('timer4', 60, 9);
-            }
-    
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        }
-    
-        async function startWebcamAndContinue() {
-            try {
-                mediaStream = await navigator.mediaDevices.getUserMedia({ 
-                    video: { width: { ideal: 1280 }, height: { ideal: 720 }, facingMode: 'user' }, 
-                    audio: true 
-                });
-    
-                for (let i = 1; i <= 4; i++) {
-                    const webcamVideo = document.getElementById(`webcam${i}`);
-                    webcamVideo.srcObject = mediaStream;
-                    document.getElementById(`webcamError${i}`).textContent = '';
-                }
-    
-                nextPage();
-            } catch (error) {
-                console.error('Error accessing media devices:', error);
-                for (let i = 1; i <= 4; i++) {
-                    document.getElementById(`webcamError${i}`).textContent = 
-                        'Camera/microphone access was denied. Please refresh and allow permissions.';
-                }
-            }
-        }
-    
-        function startTimer(timerId, seconds, nextPageNumber) {
-            const timerElement = document.getElementById(timerId);
-            let remaining = seconds;
-    
-            updateTimerDisplay(timerElement, remaining);
-    
-            timers[timerId] = setInterval(() => {
-                remaining--;
-                updateTimerDisplay(timerElement, remaining);
-    
-                if (remaining <= 0) {
-                    clearInterval(timers[timerId]);
-                    document.getElementById(`page${currentPage}`).classList.remove('active-page');
-                    currentPage = nextPageNumber;
-                    document.getElementById(`page${currentPage}`).classList.add('active-page');
-                    updateProgressBar();
-                    updateStatusIndicatorVisibility();
-    
-                    if (currentPage === 6) {
-                        startTimer('timer2', 60, 7);
-                    } else if (currentPage === 7) {
-                        startTimer('timer3', 60, 8);
-                    } else if (currentPage === 8) {
-                        startTimer('timer4', 60, 9);
-                    }
-    
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                }
-            }, 1000);
-        }
-    
-        function updateTimerDisplay(element, seconds) {
-            const mins = Math.floor(seconds / 60);
-            const secs = seconds % 60;
-            element.textContent = `${mins}:${secs < 10 ? '0' : ''}${secs}`;
-    
-            if (seconds <= 10) {
-                element.style.animation = 'none';
-                void element.offsetWidth;
-                element.style.animation = 'blink 0.5s infinite';
-            }
-        }
-    
-        window.addEventListener('beforeunload', () => {
-            if (mediaStream) {
-                mediaStream.getTracks().forEach(track => track.stop());
-            }
-            if (aiAnalysisInterval) {
-                clearInterval(aiAnalysisInterval);
-            }
-        });
-    
-        // <<< WICHTIG: Direkt beim Laden:
-        updateProgressBar();
-        updateStatusIndicatorVisibility();
-    
-        document.addEventListener('mousemove', (e) => {
-            const x = e.clientX / window.innerWidth;
-            const y = e.clientY / window.innerHeight;
-            document.documentElement.style.setProperty('--mouse-x', x);
-            document.documentElement.style.setProperty('--mouse-y', y);
-        });
-    </script>
-    </body>
-    </html>
-    
 
+    function nextPage() {
+        document.getElementById(`page${currentPage}`).classList.remove('active-page');
+        currentPage++;
+        document.getElementById(`page${currentPage}`).classList.add('active-page');
+        updateProgressBar();
+    }
+
+    function startQuestions() {
+        nextPage(); // Go to page 4 (Question 1)
+        startTimerForQuestion(1, nextQuestion); // ✅ Callback ergänzt
+    }
+
+    function nextQuestion() {
+        // Stop the previous timer if running
+        if (timers.length > 0) {
+            clearInterval(timers[timers.length - 1]);
+        }
+
+        document.getElementById(`page${currentPage}`).classList.remove('active-page');
+        currentPage++;
+        document.getElementById(`page${currentPage}`).classList.add('active-page');
+        updateProgressBar();
+
+        const questionIndex = currentPage - 3; // Page 4 = Q1 → 4 - 3 = 1
+
+        if (questionIndex <= 4) {
+            if (questionIndex === 4) {
+                startTimerForQuestion(questionIndex, submitAnswers); // Last one
+            } else {
+                startTimerForQuestion(questionIndex, nextQuestion);
+            }
+        }
+    }
+
+    function startTimerForQuestion(index, callback) {
+        const timerId = `timer${index}`;
+        const timerElement = document.getElementById(timerId);
+        let remaining = 60;
+
+        const timer = setInterval(() => {
+            const mins = Math.floor(remaining / 60);
+            const secs = remaining % 60;
+            timerElement.textContent = `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+
+            if (remaining <= 0) {
+                clearInterval(timer);
+                if (callback) callback(); // ✅ automatische Weiterleitung nach Ablauf
+            }
+
+            remaining--;
+        }, 1000);
+
+        timers.push(timer);
+    }
+
+    function submitAnswers() {
+        if (timers.length > 0) {
+            clearInterval(timers[timers.length - 1]);
+        }
+
+        const answers = {
+            question1: document.getElementById('answer1').value,
+            question2: document.getElementById('answer2').value,
+            question3: document.getElementById('answer3').value,
+            question4: document.getElementById('answer4').value
+        };
+
+        console.log("Collected answers:", answers);
+        nextPage(); // Go to completion page
+    }
+
+    // Initialize progress bar
+    updateProgressBar();
+</script>
