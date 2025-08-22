@@ -353,22 +353,206 @@
         </div>
 
       
-        <!-- Page 4 -->
-<button id="nextBtn1" class="btn" onclick="nextQuestion()" style="display:none;">
-  Next Question
-</button>
+     <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NORVIA - Talent Acquisition Process</title>
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <style>
+    :root {
+      --norvia-blue: #0a2463;
+      --norvia-red: #fb3640;
+      --norvia-accent: #00a6fb;
+      --norvia-dark: #1e1e24;
+      --norvia-light: #f8f9fa;
+    }
+    body {
+      background-color: var(--norvia-dark);
+      color: var(--norvia-light);
+      font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+    }
+    .company-logo { height: 60px; width: auto; object-fit:contain; }
+    .page {
+      display:none;
+      background: rgba(30,30,36,0.8);
+      border-radius:12px;
+      padding:2rem;
+      margin-bottom:2rem;
+    }
+    .active-page { display:block; }
+    h1 { color: var(--norvia-light); margin-bottom:1rem; }
+    .timer {
+      font-size:1.2rem;
+      font-family:'Courier New', monospace;
+      font-weight:bold;
+      text-align:right;
+      margin:1rem 0;
+    }
+    .btn {
+      background: linear-gradient(135deg, var(--norvia-accent), #0582ca);
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 30px;
+      cursor: pointer;
+      font-size: 1rem;
+      font-weight: 600;
+      margin-top: 1rem;
+      display:inline-block;
+    }
+    .btn:hover { opacity:0.9; }
+    textarea {
+      width:100%;
+      min-height:100px;
+      margin-top:1rem;
+      padding:0.5rem;
+    }
+    .progress-container {
+      width:100%;
+      height:4px;
+      background:rgba(248,249,250,0.1);
+      margin:1rem 0;
+    }
+    .progress-bar {
+      height:100%;
+      background:linear-gradient(90deg,var(--norvia-red),var(--norvia-accent));
+      width:0%;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <header>
+      <img src="NorviaLogo.png" alt="NORVIA Logo" class="company-logo">
+      <div class="tagline">Human Potential - Data-Driven.</div>
+    </header>
 
-<!-- Page 5 -->
-<button id="nextBtn2" class="btn" onclick="nextQuestion()" style="display:none;">
-  Next Question
-</button>
+    <div class="progress-container">
+      <div class="progress-bar" id="progressBar"></div>
+    </div>
 
-<!-- Page 6 -->
-<button id="nextBtn3" class="btn" onclick="nextQuestion()" style="display:none;">
-  Next Question
-</button>
+    <!-- Page 4 - Question 1 -->
+    <div class="page active-page" id="page4">
+      <h1>Question 1</h1>
+      <p>Tell us a little about yourself: What's your academic background, work experience, hobbies etc.</p>
+      <div class="timer" id="timer1">01:00</div>
+      <textarea id="answer1" placeholder="Type your response here..."></textarea>
+      <button id="nextBtn1" class="btn" onclick="nextQuestion()" style="display:none;">Next Question</button>
+    </div>
 
-<!-- Page 7 -->
-<button id="finishBtn" class="btn" onclick="finalizeAndContinue()" style="display:none;">
-  Submit & Continue
-</button>
+    <!-- Page 5 - Question 2 -->
+    <div class="page" id="page5">
+      <h1>Question 2</h1>
+      <p>How do you think, the future of recruiting will look like in around 10 years?</p>
+      <div class="timer" id="timer2">01:00</div>
+      <textarea id="answer2" placeholder="Type your response here..."></textarea>
+      <button id="nextBtn2" class="btn" onclick="nextQuestion()" style="display:none;">Next Question</button>
+    </div>
+
+    <!-- Page 6 - Question 3 -->
+    <div class="page" id="page6">
+      <h1>Question 3</h1>
+      <p>What kind of work environment helps you do your best? You can also share a specific situation or example, if you'd like to.</p>
+      <div class="timer" id="timer3">01:00</div>
+      <textarea id="answer3" placeholder="Type your response here..."></textarea>
+      <button id="nextBtn3" class="btn" onclick="nextQuestion()" style="display:none;">Next Question</button>
+    </div>
+
+    <!-- Page 7 - Question 4 -->
+    <div class="page" id="page7">
+      <h1>Question 4</h1>
+      <p>In what kind of team setting do you feel most productive or comfortable?</p>
+      <div class="timer" id="timer4">01:00</div>
+      <textarea id="answer4" placeholder="Type your response here..."></textarea>
+      <button id="finishBtn" class="btn" onclick="finalizeAndContinue()" style="display:none;">Submit & Continue</button>
+    </div>
+
+    <!-- Page 8 - Completion -->
+    <div class="page" id="page8">
+      <h1>End of session</h1>
+      <p>Thanks for getting to know you better. You can now close this tab and return to the main survey page.</p>
+    </div>
+  </div>
+
+  <script>
+    let currentPage = 4;
+    const totalPages = 8;
+    let timers = [];
+
+    function updateProgressBar() {
+      const progress = (currentPage / totalPages) * 100;
+      document.getElementById('progressBar').style.width = `${progress}%`;
+    }
+
+    function nextPage() {
+      document.getElementById(`page${currentPage}`).classList.remove('active-page');
+      currentPage++;
+      document.getElementById(`page${currentPage}`).classList.add('active-page');
+      updateProgressBar();
+    }
+
+    function nextQuestion() {
+      if (timers.length > 0) clearInterval(timers[timers.length - 1]);
+      document.getElementById(`page${currentPage}`).classList.remove('active-page');
+      currentPage++;
+      document.getElementById(`page${currentPage}`).classList.add('active-page');
+      updateProgressBar();
+
+      const questionIndex = currentPage - 3; // 4→1, 5→2, 6→3, 7→4
+      if (questionIndex >= 1 && questionIndex <= 4) {
+        startTimerForQuestion(questionIndex);
+      }
+    }
+
+    function showButtonForIndex(index) {
+      const btnId = (index === 4) ? 'finishBtn' : `nextBtn${index}`;
+      const btn = document.getElementById(btnId);
+      if (btn) btn.style.display = 'inline-block';
+    }
+
+    function startTimerForQuestion(index) {
+      const timerId = `timer${index}`;
+      const timerElement = document.getElementById(timerId);
+      let remaining = 60;
+
+      const timer = setInterval(() => {
+        const mins = Math.floor(remaining / 60);
+        const secs = remaining % 60;
+        timerElement.textContent = `${String(mins).padStart(2,'0')}:${String(secs).padStart(2,'0')}`;
+
+        if (remaining <= 0) {
+          clearInterval(timer);
+          showButtonForIndex(index); // ➜ Button nach Ablauf sichtbar
+        }
+        remaining--;
+      }, 1000);
+
+      timers.push(timer);
+    }
+
+    function submitAnswers() {
+      if (timers.length > 0) clearInterval(timers[timers.length - 1]);
+      const answers = {
+        question1: document.getElementById('answer1').value,
+        question2: document.getElementById('answer2').value,
+        question3: document.getElementById('answer3').value,
+        question4: document.getElementById('answer4').value
+      };
+      console.log("Collected answers:", answers);
+    }
+
+    function finalizeAndContinue() {
+      submitAnswers();
+      nextPage(); // zur Abschlussseite
+    }
+
+    // Init beim Laden
+    document.addEventListener('DOMContentLoaded', () => {
+      updateProgressBar();
+      startTimerForQuestion(1); // Erste Frage starten
+    });
+  </script>
+</body>
+</html>
