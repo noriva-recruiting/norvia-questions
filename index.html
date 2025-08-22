@@ -395,7 +395,7 @@
             <div class="timer" id="timer4">01:00</div>
             <textarea id="answer4" placeholder="Type your response here..."></textarea>
             <button id="nextBtn1" class="btn" onclick="submitAnswer()" style="display:none;">
-        Next Question
+        Submit Answer
     </button>        </div>
 
         <!-- Page 8 - Completion -->
@@ -452,17 +452,23 @@
     timers.push(timer);
   }
 
-  function submitAnswers() {
-    if (timers.length > 0) clearInterval(timers[timers.length - 1]);
-    const answers = {
-      question1: document.getElementById('answer1').value,
-      question2: document.getElementById('answer2').value,
-      question3: document.getElementById('answer3').value,
-      question4: document.getElementById('answer4').value
-    };
-    console.log("Collected answers:", answers);
-    nextPage(); // to page8
-  }
+function submitAnswers() {
+  if (timers.length > 0) clearInterval(timers[timers.length - 1]);
+
+  const answers = {
+    question1: document.getElementById('answer1').value,
+    question2: document.getElementById('answer2').value,
+    question3: document.getElementById('answer3').value,
+    question4: document.getElementById('answer4').value
+  };
+
+  console.log("Collected answers:", answers);
+
+  // Weiter-Button auf der letzten Seite sichtbar machen
+  const finishBtn = document.getElementById('finishBtn');
+  if (finishBtn) finishBtn.style.display = 'inline-block';
+}
+
 
   // Beim Laden: Fortschritt setzen + Timer für Frage 1 starten
   document.addEventListener('DOMContentLoaded', () => {
