@@ -353,126 +353,22 @@
         </div>
 
       
-        <!-- Page 4 - Question 1 -->
-  <div class="page active-page" id="page4">
-            <div class="terminal-effect"></div>
-            <h1>Question 1</h1>
-            <p>Tell us a little about yourself: What's your academic background, work experience, hobbies etc.</p>
-            <div class="timer" id="timer1">01:00</div>
-            <textarea id="answer1" placeholder="Type your response here..."></textarea>
- <!-- Button ist anfangs unsichtbar -->
-    <button id="nextBtn1" class="btn" onclick="nextQuestion()" style="display:none;">
-        Next Question
-    </button>        </div>
+        <!-- Page 4 -->
+<button id="nextBtn1" class="btn" onclick="nextQuestion()" style="display:none;">
+  Next Question
+</button>
 
-      <!-- Page 5 - Question 2 -->
-        <div class="page" id="page5">
-            <div class="terminal-effect"></div>
-            <h1>Question 2</h1>
-            <p>How do you think, the future of recruiting will look like in around 10 years?</p>
-            <div class="timer" id="timer2">01:00</div>
-            <textarea id="answer2" placeholder="Type your response here..."></textarea>
-             <button id="nextBtn1" class="btn" onclick="nextQuestion()" style="display:none;">
-        Next Question
-    </button>        </div>
+<!-- Page 5 -->
+<button id="nextBtn2" class="btn" onclick="nextQuestion()" style="display:none;">
+  Next Question
+</button>
 
-        <!-- Page 6 - Question 3 -->
-        <div class="page" id="page6">
-            <div class="terminal-effect"></div>
-            <h1>Question 3</h1>
-            <p>What kind of work environment helps you do your best? You can also share a specific situation or example, if you'd like to.</p>
-            <div class="timer" id="timer3">01:00</div>
-            <textarea id="answer3" placeholder="Type your response here..."></textarea>
-            <button id="nextBtn1" class="btn" onclick="nextQuestion()" style="display:none;">
-        Next Question
-    </button>        </div>
+<!-- Page 6 -->
+<button id="nextBtn3" class="btn" onclick="nextQuestion()" style="display:none;">
+  Next Question
+</button>
 
-        <!-- Page 7 - Question 4 -->
-        <div class="page" id="page7">
-            <div class="terminal-effect"></div>
-            <h1>Question 4</h1>
-            <p>In what kind of team setting do you feel most productive or comfortable?</p>
-            <div class="timer" id="timer4">01:00</div>
-            <textarea id="answer4" placeholder="Type your response here..."></textarea>
-            <button id="nextBtn1" class="btn" onclick="submitAnswer()" style="display:none;">
-        Submit Answer
-    </button>        </div>
-
-        <!-- Page 8 - Completion -->
-        <div class="page" id="page8">
-            <div class="terminal-effect"></div>
-            <h1>End of session</h1>
-            <p>Thanks for getting to know you better. You can now close this tab and return to the main survey page.</p>
-        </div>
-    </div>
-
-<script>
-  let currentPage = 4;
-  const totalPages = 8;
-  let timers = [];
-
-  function updateProgressBar() {
-    const progress = (currentPage / totalPages) * 100;
-    document.getElementById('progressBar').style.width = `${progress}%`;
-  }
-
-  function nextPage() {
-    document.getElementById(`page${currentPage}`).classList.remove('active-page');
-    currentPage++;
-    document.getElementById(`page${currentPage}`).classList.add('active-page');
-    updateProgressBar();
-  }
-
-  function nextQuestion() {
-    if (timers.length > 0) clearInterval(timers[timers.length - 1]);
-    document.getElementById(`page${currentPage}`).classList.remove('active-page');
-    currentPage++;
-    document.getElementById(`page${currentPage}`).classList.add('active-page');
-    updateProgressBar();
-
-    const questionIndex = currentPage - 3; // 4→1, 5→2, 6→3, 7→4
-    if (questionIndex <= 4) {
-      startTimerForQuestion(questionIndex, questionIndex === 4 ? submitAnswers : nextQuestion);
-    }
-  }
-
-  function startTimerForQuestion(index, callback) {
-    const timerId = `timer${index}`;
-    const timerElement = document.getElementById(timerId);
-    let remaining = 60;
-
-    const timer = setInterval(() => {
-      const mins = Math.floor(remaining / 60);
-      const secs = remaining % 60;
-      timerElement.textContent = `${String(mins).padStart(2,'0')}:${String(secs).padStart(2,'0')}`;
-      if (remaining <= 0) { clearInterval(timer); if (callback) callback(); }
-      remaining--;
-    }, 1000);
-
-    timers.push(timer);
-  }
-
-function submitAnswers() {
-  if (timers.length > 0) clearInterval(timers[timers.length - 1]);
-
-  const answers = {
-    question1: document.getElementById('answer1').value,
-    question2: document.getElementById('answer2').value,
-    question3: document.getElementById('answer3').value,
-    question4: document.getElementById('answer4').value
-  };
-
-  console.log("Collected answers:", answers);
-
-  // Weiter-Button auf der letzten Seite sichtbar machen
-  const finishBtn = document.getElementById('finishBtn');
-  if (finishBtn) finishBtn.style.display = 'inline-block';
-}
-
-
-  // Beim Laden: Fortschritt setzen + Timer für Frage 1 starten
-  document.addEventListener('DOMContentLoaded', () => {
-    updateProgressBar();
-    startTimerForQuestion(1, nextQuestion);
-  });
-</script>
+<!-- Page 7 -->
+<button id="finishBtn" class="btn" onclick="finalizeAndContinue()" style="display:none;">
+  Submit & Continue
+</button>
