@@ -413,6 +413,9 @@
       currentPage++;
       document.getElementById(`page${currentPage}`).classList.add('active-page');
       updateProgressBar();
+      if (currentPage === 3) {
+    window.parent.postMessage('showContinueBtn', '*');
+    } 
     }
 
     function nextQuestion() {
